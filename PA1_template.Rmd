@@ -102,20 +102,31 @@ hist(step_by_day$Total_steps,  xlab = "Steps", ylab = "Frequency", main = "Total
 
 #Comparing the mean of total_by_day and step_by_day
 
-mean_by_total_day = mean(total_by_day, na.rm = TRUE) %>%
+mean_by_total_day = mean(total_by_day$total_steps, na.rm = TRUE)
 mean_by_total_day
-mean_step_by_day = mean(step_by_day) %>%
+mean_step_by_day = mean(step_by_day$Total_steps)
 mean_step_by_day 
 
 #Comparing the median of total_by_day and step_by_day
 
-median_by_total_day = mean(total_by_day, na.rm = TRUE) %>%
+median_by_total_day = median(total_by_day$total_steps, na.rm = TRUE)
 median_by_total_day
-median_step_by_day = mean(step_by_day) %>%
+median_step_by_day = median(step_by_day$Total_steps)
 median_step_by_day 
 
 ```
 
+
+## Are there differences in activity patterns between weekdays and weekends?
+
+```{r}
+step_mean$date <- as.Date(step_mean$date)
+step_mean$weekday <- weekdays(step_mean$date)
+step_mean$weekend <- ifelse(step_mean$weekday == "Saturday" | step_mean$weekday == "Sunday", "Weekend", "Weekday")
+
+
+
+```
 
 
 
