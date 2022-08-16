@@ -122,7 +122,7 @@ median_step_by_day
 ```{r}
 step_mean$date <- as.Date(step_mean$date)
 step_mean$weekday <- weekdays(step_mean$date)
-step_mean$weekend <- ifelse(step_mean$weekday == "Saturday" | step_mean$weekday == "Sunday", "Weekend", "Weekday")
+step_mean$weekend <- ifelse(step_mean$weekday == "Saturday" | step_mean$weekday == "dimanche", "Weekend", "Weekday")
 
 difference_week_data <- aggregate(step_mean$steps, by = list(step_mean$weekend, step_mean$interval), na.omit(mean))
 names(difference_week_data) <- c("weekend", "interval", "steps")
