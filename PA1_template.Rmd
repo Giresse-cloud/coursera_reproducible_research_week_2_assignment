@@ -124,7 +124,10 @@ step_mean$date <- as.Date(step_mean$date)
 step_mean$weekday <- weekdays(step_mean$date)
 step_mean$weekend <- ifelse(step_mean$weekday == "Saturday" | step_mean$weekday == "Sunday", "Weekend", "Weekday")
 
+difference_week_data <- aggregate(step_mean$steps, by = list(step_mean$weekend, step_mean$interval), na.omit(mean))
+names(difference_week_data) <- c("weekend", "interval", "steps")
 
+ggplot(difference_week_data, aes(x= interval, y = steps, color = weekend)) + geom_line() + facet_grid(weekend ~.) + xlab("Interval") + ylab("Mean of steps") + ggtitle("Differences in activity patterns between weekdays and weekends")
 
 ```
 
